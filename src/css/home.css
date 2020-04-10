@@ -1,0 +1,44 @@
+.contain{
+  width: 100%;
+  height: auto;
+}
+
+.d-block{
+  display: block;
+  justify-content: center;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+}
+
+img:focus{
+  outline: none;
+}
+
+.center{
+  margin: auto;
+}
+
+.ctr{
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.topPadding{
+  padding-top: 20px;
+}
+
+.homeBase{
+  background-image: url("../img/home-bg.png");
+  background-size: auto;
+  height: 100vh;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

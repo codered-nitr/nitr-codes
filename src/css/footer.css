@@ -1,0 +1,82 @@
+.foot{
+  background-color: #101820FF;
+  height: auto;
+  color: white;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding-top: 15px;
+}
+
+@media screen and (max-width: 850px){
+  .col{
+    min-width: 300px;
+  }
+}
+
+.red{
+  animation-name: fillRed;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@font-face{
+  font-family: equinox;
+  src: url(equinoxBold.otf)
+}
+
+.f-title{
+  color: #FA3264;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  padding-bottom: 10px;
+  text-decoration: underline dotted;
+}
+
+.d-block{
+  display: block;
+  justify-content: center;
+}
+
+.f-body{
+  color: whitesmoke;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 13.5px;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+.r-seg{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.sub-footer{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: whitesmoke;
+  background-color: black;
+  height: auto;
+  max-width: 100%;
+}
+
+.cinfo{
+  color: #62C144;
+  font-size: 1.25em;
+}
+
+.f-sec{
+  margin-right: 13px;
+}
+
+.nitrLogo{
+  max-width: 340px;
+  max-height: 340px;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
