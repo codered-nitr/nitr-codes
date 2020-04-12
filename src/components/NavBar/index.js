@@ -37,7 +37,6 @@ class NavBar extends Component {
     return(
       <AuthUserContext.Consumer>
       {authUser => {
-        console.log(authUser)
         authUser && this.state.displayName === ""?this.setDisplayName(authUser.uid):console.log()
         return(
         <Navbar className={this.state.scrolled?"color-nav":"transp-nav"} collapseOnSelect expand="md" variant="dark" sticky="top" ref={elem => this.elem = elem}>

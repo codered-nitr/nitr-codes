@@ -16,7 +16,9 @@ const Footer = () => {
             <div className = "f-sec">
               <div className = "f-title">ABOUT</div>
               <div className = "f-body">
-                Code Red is a club under the Technical Society of National Institute of Technology Rourkela, centralized on improving the coding culture of the college. We conduct workshops, regular classes, and online contests to indulge budding minds in the sport of competitive programming.
+                NIT-R Codes is an initiative to give a kickstart to the rise of coding culture among the students. Even if you haven't even written a single line of code, this initiative aims to guide you to get started with competitive programming.
+                <br /> <br />
+                Code Red is a club under the Technical Society of National Institute of Technology Rourkela, centralized on improving the coding culture of the college via workshops, regular classes, and online contests.
               </div>
               <div className = "social-links">
                 <IconContext.Provider value = {{color: "#FA3264", size: "2em"}}>
