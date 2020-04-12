@@ -39,7 +39,7 @@ class NavBar extends Component {
       {authUser => {
         authUser && this.state.displayName === ""?this.setDisplayName(authUser.uid):console.log()
         return(
-        <Navbar className={this.state.scrolled?"color-nav":"transp-nav"} collapseOnSelect expand="md" variant="dark" sticky="top" ref={elem => this.elem = elem}>
+        <Navbar className="color-nav" collapseOnSelect expand="md" variant="dark" sticky="top" ref={elem => this.elem = elem}>
           <Navbar.Brand className="nav-brand" href="/">CODE <span className = "red">RED</span></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

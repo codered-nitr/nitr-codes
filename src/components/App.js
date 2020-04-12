@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css'
 import Home from './home'
@@ -10,14 +10,16 @@ import { withAuthentication } from './session';
 function App() {
   return (
     <div className="App">
-      <Helmet><title>NITR Codes | A Code Red initiative</title></Helmet>
-      <NavBar />
-      <Router>
-        <Switch>
-          <Route exact path = "/" component = {Home} />
-          <Route component = {NotFound} />
-        </Switch>
-      </Router>
+      <div className = "appbody">
+        <Helmet><title>NITR Codes | A Code Red initiative</title></Helmet>
+        <NavBar />
+        <Router>
+          <Switch>
+            <Route exact path = "/" component = {Home} />
+            <Route component = {NotFound} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }

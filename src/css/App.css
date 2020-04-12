@@ -39,3 +39,22 @@ body::-webkit-scrollbar-thumb {
   border-radius: 6px;
   border: 3px solid var(--scrollbarBG);
 }
+
+html, body{
+  height: 100%;
+}
+
+.App{
+  height: 100%;
+  width: 100%;
+}
+
+@font-face{
+  font-family: equinox;
+  src: url(equinoxBold.otf)
+}
+
+@font-face{
+  font-family: madeEvolve;
+  src: url(madeEvolveSansBold.otf)
+}

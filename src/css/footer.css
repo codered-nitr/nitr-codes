@@ -24,11 +24,6 @@
   animation-iteration-count: infinite;
 }
 
-@font-face{
-  font-family: equinox;
-  src: url(equinoxBold.otf)
-}
-
 .f-title{
   color: #FA3264;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

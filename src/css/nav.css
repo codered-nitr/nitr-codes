@@ -2,12 +2,6 @@
   background-color: #101820FF;
   transition: ease-in-out all .3s;
 }
-
-.transp-nav{
-  background-color: #00203FFF;
-  transition: ease-in-out all .3s;
-}
-
 .nav-l{
   color: #FA3264 !important;
   text-align: center;
@@ -31,11 +25,6 @@
 .nav-brand:hover{
   transform: scale(1.25);
   transition: all .2s ease-in-out;
-}
-
-@font-face{
-  font-family: madeEvolve;
-  src: url(madeEvolveSansBold.otf)
 }
 
 .nav-brand{
