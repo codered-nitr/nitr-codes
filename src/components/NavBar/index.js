@@ -40,7 +40,7 @@ class NavBar extends Component {
         authUser && this.state.displayName === ""?this.setDisplayName(authUser.uid):console.log()
         return(
         <Navbar className="color-nav" collapseOnSelect expand="md" variant="dark" sticky="top" ref={elem => this.elem = elem}>
-          <Navbar.Brand className="nav-brand" href="/">CODE <span className = "red">RED</span></Navbar.Brand>
+          <Navbar.Brand className="nav-brand" href="/"><span style = {{color: "#FEE715FF"}}># </span>NiTR <span className = "codes" >CODES</span></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">

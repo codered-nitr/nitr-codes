@@ -36,6 +36,12 @@ const Hi = () => {
       duration: 1200,
       offset: '-=1000'
     }).add({
+      targets: '.let',
+      opacity: [0, 1],
+      duration: 1000,
+      delay: anime.stagger(50, {from: 'center'})
+    })
+    .add({
       targets: '.ml8',
       opacity: 0,
       duration: 1000,
@@ -52,6 +58,13 @@ const Hi = () => {
     duration: 8000,
     easing: "linear"
   });
+  const map = Array.prototype.map
+  const nc = "NiTR Codes : a"
+  const cr = " CODE RED"
+  const ini = " Initiative"
+  const nclet = map.call(nc, c => <span className = "let">{c}</span>)
+  const crlet = map.call(cr, c => <span className = "let" style = {{color: "#FA3264", fontFamily: "equinox"}}>{c}</span>)
+  const inlet = map.call(ini, c => <span className = "let">{c}</span>)
   return(
     <div className = "hiBox">
       <h1 className="ml8">
@@ -62,6 +75,7 @@ const Hi = () => {
         <span className="circle circle-white"></span>
         <span className="circle circle-dark"></span>
         <span className="circle circle-container"><span className="circle circle-dark-dashed"></span></span>
+        <span className="subtext"><span style = {{fontFamily: "madeEvolve"}}>{nclet}{crlet}{inlet}</span></span>
       </h1>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     </div>

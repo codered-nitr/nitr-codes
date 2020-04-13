@@ -6,7 +6,15 @@ h1.ml8 {
   height: inherit;
   text-align: center;
   background-color: #101820FF;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   z-index: 1000;
+}
+
+.subtext{
+  position: relative;
+  bottom: -70%;
 }
 
 .ml8 .letters-container {
