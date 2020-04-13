@@ -17,6 +17,12 @@
   }
 }
 
+@keyframes fillRed{
+  0% {color: #FA3264;}
+  50% {color: whitesmoke;}
+  100% {color: #FA3264;}
+}
+
 .red{
   animation-name: fillRed;
   animation-duration: 3s;

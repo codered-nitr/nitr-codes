@@ -35,11 +35,24 @@ img:focus{
 }
 
 .homeBase{
-  background-image: url("../img/home-bg.png");
-  background-size: auto;
-  height: 100vh;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: inherit;
   overflow: hidden;
+}
+
+.greeting{
+  background-color: #101820FF;
+  height: 75vh;
+  display: flex;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 800px){
+  .intro{
+    font-size: 2rem;
+  }
 }

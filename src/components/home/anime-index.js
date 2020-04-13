@@ -49,7 +49,9 @@ const Hi = () => {
       delay: 1400
     }).add({
       targets: '.hiBox',
-      translateY: 10000,
+      scale: [1, 0],
+      height: 0,
+      width: 0
     });
 
   anime({
