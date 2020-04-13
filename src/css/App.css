@@ -17,8 +17,8 @@
 
 html{
   scroll-behavior: smooth;
-  --scrollbarBG: whitesmoke;
-  --thumbBG: #FA3264;
+  --scrollbarBG: #101820FF;
+  --thumbBG: #101820FF;
 }
 
 body::-webkit-scrollbar{
