@@ -76,6 +76,9 @@ const Home = () => {
                   <Nav.Item>
                     <Nav.Link eventKey="fourth">How to get started</Nav.Link>
                   </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="fifth">I don't see any improvements</Nav.Link>
+                  </Nav.Item>
                 </Nav>
               </Col>
               <Col>
@@ -116,6 +119,24 @@ const Home = () => {
                     Participate in competitions. Learn from experienced coders. The more you code, the more you’ll be able to find the suitable data structure and/or algorithm for a specific problem (this is a very important skill for a software development). With dedicated practice, you’ll be able to ace competitive programming.<br /><br />
                     <h6><b>P.S. We are here for you</b></h6>
                     NiTR.codes is an initiative dedicated towards helping you in getting started in the sport of competitive programming. Whether you are completely new to it, or have some experience, we aim to provide you with content and contests that will kickstart your journey.
+                  </Tab.Pane>
+                  <Tab.Pane eventKey = "fifth">
+                    <h3>I don't see any improvements. Should I switch or continue with CP?</h3>
+                    If you feel like that, you are definitely not alone. It takes a lot of time and effort to get better at problem solving. The above situation can be broadly classified into the following cases.<br />
+                    <ol>
+                      <li>
+                        <b>You are always in your comfort zone.</b><br />It may be that you solve problems from only those topics that you are good at. Getting out of your comfort zone, facing unforeseen challenges is one of the keys to improve problem solving. If you can't solve a problem, look for editorials or other people's solutions. At the end of the day you will learn some new concept.
+                      </li>
+                      <li>
+                        <b>You are not revisiting the problems that you couldn't solve.</b><br />As important as it is to face tougher problems, upsolving is equally important. Upsolving basically refers to solving the problems after a live contest, whether you need to see the editorial or not. Taking part in contests without upsolving them later has no point.
+                      </li>
+                      <li>
+                        <b>You are easily demotivated.</b><br />Failure is a common thing to deal with when facing problems. It may take numerous wrong answers until you realise how to get that one green tick or AC. Staying focussed and not giving up is worth it. Even if you can't solve a problem, think about it for at least 30-45 minutes. If you still can't figure it out, check the solution and solve it again without external help.
+                      </li>
+                    </ol>
+                    <b>How should you practice Competitive Programming?</b><br />
+                    The answer is simple. Just don't fall into the above categories, and if you do, follow the steps necessary to get out of it. A short and self explanatory visualization of competitive programming can be found in this blog:&nbsp;
+                    <a href = "https://codeforces.com/blog/entry/17842">The 'science' of training in competitive programming</a>.
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
