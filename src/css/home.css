@@ -56,3 +56,87 @@ img:focus{
     font-size: 2rem;
   }
 }
+
+.gsbtn{
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #2196f3;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+  -webkit-box-reflect: below -1px linear-gradient(transparent, #0005);
+}
+
+a.gsbtn{
+  text-decoration: none;
+}
+
+.gsbtn:hover{
+  color: #255784;
+  background-color: #2196f3;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+}
+
+.gsbtn span{
+  position: absolute;
+  display: block;
+}
+@keyframes upspan{
+  from {left: -100%;}
+  to {left: 100%}
+}
+.gsbtn span:nth-child(1)  {
+  top: 0;
+  animation-name: upspan;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,#2196f3);
+}
+@keyframes downspan{
+  from {right: -100%;}
+  to {right: 100%}
+}
+.gsbtn span:nth-child(3)  {
+  bottom: 0;
+  animation-name: downspan;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-iteration-count: infinite;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,#2196f3);
+}
+@keyframes rightspan{
+  from {top: -100%;}
+  to {top: 100%}
+}
+.gsbtn span:nth-child(2)  {
+  right: 0;
+  animation-name: rightspan;
+  animation-duration: 1s;
+  animation-delay: .25s;
+  animation-iteration-count: infinite;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(180deg,transparent,#2196f3);
+}
+@keyframes leftspan{
+  from {bottom: -100%;}
+  to {bottom: 100%}
+}
+.gsbtn span:nth-child(4)  {
+  left: 0;
+  animation-name: leftspan;
+  animation-duration: 1s;
+  animation-delay: 0.75s;
+  animation-iteration-count: infinite;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(180deg,transparent,#2196f3);
+}
