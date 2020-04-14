@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../css/home.css'
-import Footer from '../footer'
 import anime from 'animejs/lib/anime.es.js';
 import '../../css/hi.css'
 const Hi = () => {

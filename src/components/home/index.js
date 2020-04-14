@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../css/home.css'
 import Footer from '../footer'
 import anime from 'animejs/lib/anime.es.js';
 import '../../css/hi.css'
 import Hi from './anime-index'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 const intros = [
   "Interested in programming?",
   "Leave behind rote learning, pick up applications!",
@@ -13,7 +11,6 @@ const intros = [
 ]
 const map = Array.prototype.map
 const Home = () => {
-  const [index, setIndex] = useState(0)
   anime.timeline({loop : true})
     .add({
       targets: '.let0',
@@ -42,18 +39,18 @@ const Home = () => {
           <h1 className = "intro" style = {{fontFamily: "equinox"}}>
             {map.call(intros[0], c => <span className = "let0" style = {{color: "#FA3264"}}>{c}</span>)}  <br />
             {map.call(intros[1], c => <span className = "let1" style = {{color: "#ADEFD1FF"}}>{c}</span>)}  <br />
-            {map.call(intros[2], c => <span className = "let2" style = {{color: "#D6ED17FF"}}>{c}</span>)}  <br /> <br />
-            <a className = "gsbtn" href = "#">
+            {map.call(intros[2], c => <span className = "let2" style = {{color: "#D6ED17FF"}}>{c}</span>)}  <br />
+            <div className = "gsbtn" href = "#">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Let's Get Started
-            </a>
+            </div>
           </h1>
         </div>
         <div className = "downgreet">
-          <div style = {{textAlign: "center"}}><img src = {require('../../img/nitr+cld2.png')} /></div>
+          <div style = {{textAlign: "center"}}><img alt="" src = {require('../../img/nitr+cld2.png')} /></div>
         </div>
       </div>
       <Footer />

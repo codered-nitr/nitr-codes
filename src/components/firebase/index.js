@@ -1,18 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
-import React from 'react'
 import FirebaseContext, { withFirebase } from './context'
-const firebaseConfigTest = {
-  apiKey: "AIzaSyBiMV_Yx_49efojZW6okr5UuYWZTnS--Uk",
-  authDomain: "nitr-codes.firebaseapp.com",
-  databaseURL: "https://nitr-codes.firebaseio.com",
-  projectId: "nitr-codes",
-  storageBucket: "nitr-codes.appspot.com",
-  messagingSenderId: "618458581799",
-  appId: "1:618458581799:web:e154f9cbfcb5f57c09f702",
-  measurementId: "G-PDBMP0JF4Z"
-};
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

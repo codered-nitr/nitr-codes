@@ -151,11 +151,11 @@ const LSUBase = props => {
             </InputGroup>
             <InputGroup className = "LSUgroup">
               <InputGroup.Prepend><MdEmail /></InputGroup.Prepend>
-              <FormControl className = "LSU" readOnly style = {{backgroundColor: "black"}} type = "email" required className = "LSU" value = {sEmail} placeholder = "NITRKL Email (auto-filled from Roll No.)" />
+              <FormControl className = "LSU" readOnly style = {{backgroundColor: "black"}} type = "email" required value = {sEmail} placeholder = "NITRKL Email (auto-filled from Roll No.)" />
             </InputGroup>
             <InputGroup className = "LSUgroup">
               <InputGroup.Prepend><IoMdKey /></InputGroup.Prepend>
-              <FormControl className = "LSU" type = "password" required className = "LSU" value = {sPass} onChange = {event => setSPass(event.target.value)} placeholder = "Password" />
+              <FormControl className = "LSU" type = "password" required value = {sPass} onChange = {event => setSPass(event.target.value)} placeholder = "Password" />
             </InputGroup>
             <div style = {{textAlign: "center"}}><Button type = "submit" variant = "dark" id = "LSUsubmit">Create</Button></div>
           </Form>
