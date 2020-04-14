@@ -2,7 +2,7 @@
   background-color: #101820FF;
   transition: ease-in-out all .3s;
 }
-.nav-l{
+.color-nav .nav-l{
   color: #FA3264 !important;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -11,7 +11,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.nav-l:hover{
+.color-nav .nav-l:hover{
   color: whitesmoke !important;
   transform: scale(1.25);
   transition: all .2s ease-in-out;
@@ -23,17 +23,17 @@
   }
 }
 
-.nav-brand{
+.color-nav .nav-brand{
   transform: scale(1);
   transition: all 0.2s ease-in-out;
 }
 
-.nav-brand:hover{
+.color-nav .nav-brand:hover{
   transform: scale(1.25);
   transition: all .2s ease-in-out;
 }
 
-.nav-brand{
+.color-nav .nav-brand{
   font-family: madeEvolve;
   padding-right: 7px;
   border-right: 2px solid #FA3264;
