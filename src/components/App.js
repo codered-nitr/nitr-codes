@@ -11,6 +11,7 @@ import Leaderboard from './leaderboard'
 import Me from './me'
 import CMS from './cms'
 import NotFound from './404';
+import Problemset from './problemset'
 import { withAuthentication } from './session';
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Switch>
             <Route exact path = "/" component = {Home} />
             <Route exact path = "/contest/:id/" component = {Contest} />
+            <Route exact path = "/problemset" component = {Problemset} />
             <Route exact path = "/problem/:id/" component = {Problem} />
             <Route exact path = "/leaderboard/contest/:id" component = {Leaderboard} />
             <Route exact path = "/me" component = {Me} />

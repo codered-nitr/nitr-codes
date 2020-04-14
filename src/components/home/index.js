@@ -4,6 +4,7 @@ import Footer from '../footer'
 import anime from 'animejs/lib/anime.es.js';
 import '../../css/hi.css'
 import Hi from './anime-index'
+import Us from './us'
 import { Nav, Tab, Row, Col } from 'react-bootstrap';
 const intros = [
   "Interested in programming?",
@@ -54,12 +55,16 @@ const Home = () => {
         </div>
       </div>
       <div ref = {gsRef}>
-        <div className = "downgreet" style = {{textAlign: "center", fontFamily: "equinox"}}>
+        <div className = "downgreet" style = {{textAlign: "center"}}>
           <div><img alt="" src = {require('../../img/nitr+cld2.png')} /></div>
-          <h2>Frequently asked questions</h2>
         </div>
-        <hr align = "center" width = "50%" />
+        <Us /><hr align = "center" width = "50%"/>
+        <div className = "moveToProblemset">
+          
+        </div>
         <div className = "faq">
+          <h2 style = {{textAlign: "center", fontFamily: "equinox"}}>Frequently asked questions</h2>
+          <hr align = "center" width = "50%" />  
           <Tab.Container id = "faq" defaultActiveKey = "first" fluid = "sm">
             <Row>
               <Col sm = {3} style = {{fontFamily: "equinox"}}>
@@ -109,7 +114,7 @@ const Home = () => {
                   <Tab.Pane eventKey = "fourth">
                     <h3>How to get started?</h3>
                     <h6><b>Step 1: Choose a programming language</b></h6>
-                    It can be a high-level language like Python or a middle-level language like C/C++. If you are a beginner, Python will be easier to start with. However, C++ is quite faster when it come to the actual sense of competition.<br /><br />
+                    It can be a high-level language like Python or a middle-level language like C/C++. If you are a beginner, Python will be easier to start with. However, C++ is quite faster when it comes to the actual sense of competition.<br /><br />
                     <h6><b>Step 2: Learn about time and space compexities</b></h6>
                     Time complexity refers to the execution time of all the operations in a program. All operations of a computer take constant time. Space complexity, similar to time complexity, is also used to judge the performance of the running program. It is a measure of the amount of working storage (or memory) an algorithm needs. While choosing a data structure for a particular problem, time and space complexities play a big role.<br /><br />
                     <h6><b>Step 3: Learn the basic data structures and algorithms</b></h6>
@@ -121,7 +126,7 @@ const Home = () => {
                     NiTR.codes is an initiative dedicated towards helping you in getting started in the sport of competitive programming. Whether you are completely new to it, or have some experience, we aim to provide you with content and contests that will kickstart your journey.
                   </Tab.Pane>
                   <Tab.Pane eventKey = "fifth">
-                    <h3>I don't see any improvements. Should I switch or continue with CP?</h3>
+                    <h3>I don't see any improvements. What should i do?</h3>
                     If you feel like that, you are definitely not alone. It takes a lot of time and effort to get better at problem solving. The above situation can be broadly classified into the following cases.<br />
                     <ol>
                       <li>
@@ -135,7 +140,9 @@ const Home = () => {
                       </li>
                     </ol>
                     <b>How should you practice Competitive Programming?</b><br />
-                    The answer is simple. Just don't fall into the above categories, and if you do, follow the steps necessary to get out of it. A short and self explanatory visualization of competitive programming can be found in this blog:&nbsp;
+                    The answer is simple. Just don't fall into the above categories, and if you do, follow the steps necessary to get out of it.
+                    It may take weeks or even months before you actually see a noticable change in your performance. But that solely depends on how efficiently you sharpen your skills.
+                    A short and self explanatory visualization of competitive programming can be found in this blog:&nbsp;
                     <a href = "https://codeforces.com/blog/entry/17842">The 'science' of training in competitive programming</a>.
                   </Tab.Pane>
                 </Tab.Content>
