@@ -139,6 +139,14 @@ div.gsbtn{
   height: 100%;
   width: 2px;
   background: linear-gradient(180deg,transparent,#2196f3);
+  transform: scale(1);
+  transition: transform 0.2s
+}
+
+.gsbtn:hover{
+  cursor: none;
+  transform: scale(1.25);
+  transition: transform 0.2s
 }
 
 .nav-pills .nav-link.active{

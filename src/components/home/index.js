@@ -73,6 +73,9 @@ const Home = () => {
                   <Nav.Item>
                     <Nav.Link eventKey="third">CP vs Software Development</Nav.Link>
                   </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="fourth">How to get started</Nav.Link>
+                  </Nav.Item>
                 </Nav>
               </Col>
               <Col>
@@ -99,6 +102,20 @@ const Home = () => {
                     A developer can build good software without having competitive programming skills but can only go so far. Without having good problem solving skills and good knowledge of data structures and algorithms, the developer will not be able to make his/her application/software faster, more efficient, having better time and space complexity.<br /><br />
                     So both of them need each other. So better to become both and help yourself. Its easier said than done. There is often some kind of a bias that you may see regarding this.<br /><br />
                     <i>Source: <a href="https://medium.com/@anirbanroydas/competitive-programmer-vs-developer-lets-talk-91f37f819d65">Let's Talk</a></i>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey = "fourth">
+                    <h3>How to get started?</h3>
+                    <h6><b>Step 1: Choose a programming language</b></h6>
+                    It can be a high-level language like Python or a middle-level language like C/C++. If you are a beginner, Python will be easier to start with. However, C++ is quite faster when it come to the actual sense of competition.<br /><br />
+                    <h6><b>Step 2: Learn about time and space compexities</b></h6>
+                    Time complexity refers to the execution time of all the operations in a program. All operations of a computer take constant time. Space complexity, similar to time complexity, is also used to judge the performance of the running program. It is a measure of the amount of working storage (or memory) an algorithm needs. While choosing a data structure for a particular problem, time and space complexities play a big role.<br /><br />
+                    <h6><b>Step 3: Learn the basic data structures and algorithms</b></h6>
+                    Nearly every coding problem will require the usage of a specific data structure or algorithm for an optimal solution. Knowing basic data structures and algorithmic techniques before you start is a must. Knowledge of the following data structures and associated algorithms is a must for competitive coding.<br />
+                    <ul style = {{listStyleType: "disc"}}><li>Array</li><li>Linked List</li><li>Stack</li><li>Queue</li><li>Tree</li><li>Graph</li><li>HashMap</li></ul>
+                    <h6><b>Step 4: Taking part in online coding contests</b></h6>
+                    Participate in competitions. Learn from experienced coders. The more you code, the more you’ll be able to find the suitable data structure and/or algorithm for a specific problem (this is a very important skill for a software development). With dedicated practice, you’ll be able to ace competitive programming.<br /><br />
+                    <h6><b>P.S. We are here for you</b></h6>
+                    NiTR.codes is an initiative dedicated towards helping you in getting started in the sport of competitive programming. Whether you are completely new to it, or have some experience, we aim to provide you with content and contests that will kickstart your journey.
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
