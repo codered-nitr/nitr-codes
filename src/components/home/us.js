@@ -20,7 +20,7 @@ const pages = [
   ({ style }) => <animated.div style={{ ...style }}>
     <div>
       <h5 style = {{fontFamily: "madeEvolve"}}>Academy</h5>
-      Articles, editorials, blogs and other things of reference to give you a hand when stuck. NiTR Codes Academy(NCA) aims to be the full fledged peer-to-peer help portal you shall ever need.
+      Articles, editorials, blogs and other things of reference to give you a hand when stuck. NiTR Codes Academy (NCA) aims to be the full fledged peer-to-peer help portal you shall ever need.
     </div>
   </animated.div>,
 ]

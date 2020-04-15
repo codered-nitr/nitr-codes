@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import '../../css/home.css'
 import Footer from '../footer'
 import anime from 'animejs/lib/anime.es.js';
@@ -13,7 +13,6 @@ const intros = [
 ]
 const map = Array.prototype.map
 const Home = () => {
-  const [pset, setPset] = useState(false)
   const gsRef = useRef(null)
   const scrollToGs = () => window.scrollTo(0, gsRef.current.offsetTop-50)
   anime.timeline({loop : true})
