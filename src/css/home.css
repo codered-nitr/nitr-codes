@@ -177,3 +177,9 @@ div.gsbtn{
   min-height: 50px;
   min-width: 300px;
 }
+
+hr.faqhr{
+  border: 0; 
+  height: 1px; 
+  background: linear-gradient(to right, #fff, #101820FF, #fff);
+}

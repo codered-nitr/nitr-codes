@@ -66,9 +66,10 @@ const Home = () => {
             {pset?"Take me there!":"We have a problemset!"}
           </a>
         </div>
+        <hr align = "center" width = "50%" /> 
         <div className = "faq">
           <h2 style = {{textAlign: "center", fontFamily: "equinox"}}>Frequently asked questions</h2>
-          <hr align = "center" width = "50%" />  
+          <hr align = "center" width = "50%" className = "faqhr" />  
           <Tab.Container id = "faq" defaultActiveKey = "first" fluid = "sm">
             <Row>
               <Col sm = {3} style = {{fontFamily: "equinox"}}>
