@@ -167,3 +167,13 @@ div.gsbtn{
 .faq h3{
   font-family: madeEvolve;
 }
+
+.movetoPS a{
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.psbtn{
+  min-height: 50px;
+  min-width: 300px;
+}

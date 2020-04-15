@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import '../../css/home.css'
 import Footer from '../footer'
 import anime from 'animejs/lib/anime.es.js';
@@ -13,6 +13,7 @@ const intros = [
 ]
 const map = Array.prototype.map
 const Home = () => {
+  const [pset, setPset] = useState(false)
   const gsRef = useRef(null)
   const scrollToGs = () => window.scrollTo(0, gsRef.current.offsetTop-50)
   anime.timeline({loop : true})
@@ -59,8 +60,11 @@ const Home = () => {
           <div><img alt="" src = {require('../../img/nitr+cld2.png')} /></div>
         </div>
         <Us /><hr align = "center" width = "50%"/>
-        <div className = "moveToProblemset">
-          
+        <div className = "movetoPS" style = {{textAlign: "center", fontFamily: "equinox"}}>
+          <h3>Ready to take some problems?</h3>
+          <a className = "psbtn" href = "/problemset" onMouseEnter = {() => setPset(true)} onMouseLeave = {() => setPset(false)}>
+            {pset?"Take me there!":"We have a problemset!"}
+          </a>
         </div>
         <div className = "faq">
           <h2 style = {{textAlign: "center", fontFamily: "equinox"}}>Frequently asked questions</h2>
