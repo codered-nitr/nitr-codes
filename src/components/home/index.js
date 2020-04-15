@@ -59,13 +59,7 @@ const Home = () => {
         <div className = "downgreet" style = {{textAlign: "center"}}>
           <div><img alt="" src = {require('../../img/nitr+cld2.png')} /></div>
         </div>
-        <Us /><hr align = "center" width = "50%"/>
-        <div className = "movetoPS" style = {{textAlign: "center", fontFamily: "equinox"}}>
-          <h3>Ready to take some problems?</h3>
-          <a className = "psbtn" href = "/problemset" onMouseEnter = {() => setPset(true)} onMouseLeave = {() => setPset(false)}>
-            {pset?"Take me there!":"We have a problemset!"}
-          </a>
-        </div>
+        <Us />
         <hr align = "center" width = "50%" /> 
         <div className = "faq">
           <h2 style = {{textAlign: "center", fontFamily: "equinox"}}>Frequently asked questions</h2>
