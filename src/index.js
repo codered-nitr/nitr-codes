@@ -4,11 +4,14 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Firebase, {FirebaseContext} from './components/firebase'
+import dbx, {dbxContext} from './components/dropbox'
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-  </FirebaseContext.Provider>,
+  <dbxContext.Provider value={dbx}>
+    <FirebaseContext.Provider value={new Firebase()}>
+      <App />
+    </FirebaseContext.Provider>
+  </dbxContext.Provider>,
   document.getElementById('root')
 );
 
