@@ -3,6 +3,9 @@ import ReactHtmlParser from 'react-html-parser'
 import {withDBX} from '../dropbox'
 import { withFirebase } from '../firebase'
 import { useParams, useHistory } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
+import '../../css/problem.css'
+import IDE from './ide'
 const Problem = props => {
   const {id} = useParams()  
   const [probelmDiv, setPD] = useState(null)
@@ -15,8 +18,15 @@ const Problem = props => {
   })
   .catch(() => history.push("/404"))
   return(
-    <div>
-      {probelmDiv?ReactHtmlParser(probelmDiv):"Loading"}
+    <div className = "problem">
+      <Row noGutters>
+        <Col id = "pbm">
+          <div className = "problemDiv">
+            {probelmDiv?ReactHtmlParser(probelmDiv):"Loading"}
+          </div>
+        </Col>
+        <Col><div className = "ideDiv"><IDE /></div></Col>
+      </Row>
     </div>
   )
 }

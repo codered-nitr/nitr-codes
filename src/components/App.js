@@ -17,22 +17,20 @@ import { withDBX } from './dropbox'
 function App() {
   return (
     <div className="App">
-      <div className = "appbody">
-        <Helmet><title>NITR Codes | A Code Red initiative</title></Helmet>
-        <NavBar />
-        <Router>
-          <Switch>
-            <Route exact path = "/" component = {Home} />
-            <Route exact path = "/contest/:id/" component = {Contest} />
-            <Route exact path = "/problemset" component = {Problemset} />
-            <Route exact path = "/problem/:id/" component = {Problem} />
-            <Route exact path = "/academy" component = {Academy} />
-            <Route exact path = "/academy/:type/:id/" component = {Paper} />
-            <Route exact path = "/me" component = {Me} />
-            <Route component = {NotFound} />
-          </Switch>
-        </Router>
-      </div>
+      <Helmet><title>NITR Codes | A Code Red initiative</title></Helmet>
+      <NavBar />
+      <Router>
+        <Switch>
+          <Route exact path = "/" component = {Home} />
+          <Route exact path = "/contest/:id/" component = {Contest} />
+          <Route exact path = "/problemset" component = {Problemset} />
+          <Route exact path = "/problem/:id/" component = {Problem} />
+          <Route exact path = "/academy" component = {Academy} />
+          <Route exact path = "/academy/:type/:id/" component = {Paper} />
+          <Route exact path = "/me" component = {Me} />
+          <Route component = {NotFound} />
+        </Switch>
+      </Router>
     </div>
   );
 }

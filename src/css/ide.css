@@ -1,0 +1,96 @@
+.editor{
+    width: 50%;
+    min-width: 300px;
+    font-family: monospace;
+    text-align: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.langSelect{
+    width: 15%;
+    padding: 0.5%;
+}
+
+.inline{
+    display: inline-block;
+}
+
+th{
+    width: 50%;
+}
+
+.actions{
+    border-radius: 15px;
+    min-width: 75px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+#run{
+    color: white;
+    background-color: #e83e8c;
+}
+
+#running{
+    color: black;
+    background-color: #00E69B;
+}
+
+#clear{
+    color: white;
+    background-color: #1E0A14;
+}
+
+.wd65{
+    width: 65%;
+    min-width: 400px;
+}
+
+.wd50{
+    width: 50%;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+    height: 200px;
+    font-size: small;
+}
+
+.inp{
+    border-radius: 15px 20px 20px 5px;
+}
+
+.out{
+    border-radius: 20px 15px 5px 20px;
+}
+
+.bottomPadding{
+    padding-bottom: 10px;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.btnBar {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+th{
+    color: whitesmoke !important;
+}
