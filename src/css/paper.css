@@ -1,0 +1,15 @@
+.disqus{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  max-width: 750px;
+  min-width: 350px;
+}
+
+.paperArea{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+  width: 80%;
+  max-width: 900px;
+}
