@@ -45,9 +45,20 @@ class IDE extends Component{
       method: "POST"
     }, (error, response, body) => {
       const id = (JSON.parse(response.body))["id"];
+      console.log(id)
       setTimeout(() => {
         request(`http://api.paiza.io:80/runners/get_details?id=${id}&api_key=guest`, (err, res, body) => {
-          this.setState({stdout: (JSON.parse(res.body))["stdout"], executing: false})
+          const jres = JSON.parse(res.body)
+          console.log(jres)
+          const br = jres["build_result"]
+          const r = jres["result"]
+          const bse = jres["build_stderr"]
+          if(bse && bse !== "") this.setState({stdout: bse})
+          else if(br && br === "failure") this.setState({stdout: "Compilation Error"})
+          else if(r && r === "timeout") this.setState({stdout: "Time Limit Exceeded"})
+          else if(r && r === "failure") this.setState({stdout: "Failed"})
+          else  this.setState({stdout: jres["stdout"]})
+          this.setState({executing: false})
         })
       }, 3000)
     })
@@ -111,7 +122,7 @@ const CustomTest = props => {
             <textarea className = "inp noLeftBorder" placeholder = " Enter custom input" value = {props.stdin} onChange = {props.onStdInChange} />
           </div>
           <div className = "center inline wd50">
-            <textarea className = "out noRightBorder" placeholder = " Run to generate output" value = {props.stdout} readOnly = {true} />
+            <textarea className = "out noRightBorder" placeholder = " Run to generate output" value = {props.stdout || ""} readOnly = {true} />
           </div>
         </div>
         <div style = {{width: "100%", textAlign: "center"}}>
