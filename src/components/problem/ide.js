@@ -11,6 +11,7 @@ import 'ace-builds/src-noconflict/theme-github'
 import 'ace-builds/src-noconflict/theme-solarized_dark'
 import 'ace-builds/src-noconflict/theme-terminal'
 import { Button, Spinner, Modal, Table } from 'react-bootstrap'
+const jsdiff = require('diff');
 
 const request = require('request')
 
@@ -45,11 +46,9 @@ class IDE extends Component{
       method: "POST"
     }, (error, response, body) => {
       const id = (JSON.parse(response.body))["id"];
-      console.log(id)
       setTimeout(() => {
         request(`http://api.paiza.io:80/runners/get_details?id=${id}&api_key=guest`, (err, res, body) => {
           const jres = JSON.parse(res.body)
-          console.log(jres)
           const br = jres["build_result"]
           const r = jres["result"]
           const bse = jres["build_stderr"]
@@ -64,7 +63,32 @@ class IDE extends Component{
     })
   }
   onSubmit = () => {
-    
+    this.props.dbx.filesDownload({
+      path: `/testcases/${this.props.pid}.txt`
+    }).then(response => {
+      response.fileBlob.text().then(testdata => {
+        request({
+          url: `http://api.paiza.io:80/runners/create?source_code=${encodeURIComponent(this.state.script)}&language=${this.modes[this.selected].language}&input=${encodeURIComponent(testdata)}&api_key=guest`,
+          method: "POST"
+        }, (err, res, body) => {
+          const pzID = (JSON.parse(res.body))["id"];
+          this.props.dbx.filesDownload({
+            path: `/outputs/${this.props.pid}.txt`
+          }).then(resp => {
+            resp.fileBlob.text().then(opdata => {
+              setTimeout(() => {
+                request(`http://api.paiza.io:80/runners/get_details?id=${pzID}&api_key=guest`, (err, rs, body) => {
+                  const sout = (String((JSON.parse(rs.body))["stdout"])).trim()
+                  const diff = jsdiff.diffChars(sout, opdata.trim());
+                  if(diff[0]["added"] || diff[0]["removed"])  console.log("Wrong Answer")
+                  else  console.log("ACCEPTED")
+                })
+              }, 1000)
+            })
+          })
+        })
+      })
+    })
   }
 
   render() {

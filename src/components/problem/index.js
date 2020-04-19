@@ -25,7 +25,7 @@ const Problem = props => {
             {probelmDiv?ReactHtmlParser(probelmDiv):"Loading"}
           </div>
         </Col>
-        <Col><div className = "ideDiv"><IDE /></div></Col>
+        <Col><div className = "ideDiv"><IDE pid = {id} dbx = {props.dbx}/></div></Col>
       </Row>
     </div>
   )
