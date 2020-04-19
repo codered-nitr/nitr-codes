@@ -94,3 +94,12 @@ input:focus, textarea:focus, select:focus{
 th{
     color: whitesmoke !important;
 }
+
+.wd65{
+    width: 65%;
+    min-width: 400px;
+}
+
+.wd50{
+    width: 50%;
+}
