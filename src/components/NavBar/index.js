@@ -29,15 +29,10 @@ class NavBar extends Component {
     else
       this.setState({scrolled: false})
   }
-  setDisplayName = uid => {
-    this.props.firebase.user(uid).once('value')
-      .then(snapshot => this.setState({displayName: snapshot.val().displayName.split(' ')[0]}))
-  }
   render() {
     return(
       <AuthUserContext.Consumer>
       {authUser => {
-        authUser && this.state.displayName === ""?this.setDisplayName(authUser.uid):console.log()
         return(
         <Navbar className="color-nav" collapseOnSelect expand="md" variant="dark" sticky="top" ref={elem => this.elem = elem}>
           <Navbar.Brand className="nav-brand" href="/"><span style = {{color: "#FEE715FF"}}># </span>NiTR <span className = "codes" >CODES</span></Navbar.Brand>
@@ -53,7 +48,7 @@ class NavBar extends Component {
               {authUser?
                 <>
                   <Nav.Link style={{color: "whitesmoke", textAlign: "center", fontFamily: "Verdana, Geneva, Tahoma, sans-serif", font: "outline"}} href="/account">
-                    Hey, {this.state.displayName}!
+                    Hey, {authUser.displayName}!
                   </Nav.Link>
                   <span className = "logout" title = "Logout" style = {{marginLeft: "auto", marginRight: "auto"}}>
                     <MdSettingsPower style = {{cursor: "pointer"}} onClick = {this.props.firebase.doSignOut} />
@@ -104,7 +99,8 @@ const LSUBase = props => {
             nitrRoll: sRoll.toUpperCase(),
             solved: []
           })
-          this.props.firebase.doSendEmailVerification() //To be corrected
+          .then(() => props.firebase.auth.currentUser.updateProfile({displayName: sName}))
+          .then(() => props.firebase.doSendEmailVerification())
       })
       .catch(error => {
         setSErr(error.message)
