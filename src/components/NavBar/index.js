@@ -98,10 +98,11 @@ const LSUBase = props => {
     props.firebase
       .doCreateUserWithEmailAndPassword(sEmail, sPass)
       .then(authUser => {
-        props.firebase.user(authUser.user.uid)
+        props.firebase.user(authUser.uid)
           .set({
             displayName: sName,
-            nitrRoll: sRoll.toUpperCase()
+            nitrRoll: sRoll.toUpperCase(),
+            solved: []
           })
           this.props.firebase.doSendEmailVerification() //To be corrected
       })

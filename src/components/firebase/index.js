@@ -32,6 +32,18 @@ class Firebase{
   //User API
   users = () => this.db.ref('users')
   user = uid => this.db.ref(`users/${uid}`)
+  //Contests API
+  contests = () => this.db.ref('contests')
+  contest = cid => this.db.ref(`contests/${cid}`)
+  //Problems API
+  problems = () => this.db.ref('problems')
+  problem = pid => this.db.ref(`problems/${pid}`)
+  //Articles API
+  articles = () => this.db.ref('articles')
+  article = aid => this.db.ref(`articles/${aid}`)
+  //Editorials API
+  editorials = () => this.db.ref('editorials')
+  editorial = eid => this.db.ref(`editorials/${eid}`)
 }
 
 export default Firebase

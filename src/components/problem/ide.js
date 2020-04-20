@@ -10,10 +10,28 @@ import 'ace-builds/src-noconflict/theme-monokai'
 import 'ace-builds/src-noconflict/theme-github'
 import 'ace-builds/src-noconflict/theme-solarized_dark'
 import 'ace-builds/src-noconflict/theme-terminal'
-import { Button, Spinner, Modal, Table } from 'react-bootstrap'
-const jsdiff = require('diff');
+import {IconContext} from 'react-icons'
+import {GiCrossMark} from 'react-icons/gi'
+import {TiTickOutline} from 'react-icons/ti'
+import { Button, Spinner, Modal, Table, Alert } from 'react-bootstrap'
+import { AuthUserContext } from '../session'
 
+const jsdiff = require('diff');
 const request = require('request')
+var au = null
+const alerts = [
+  <Alert variant = "danger">
+    <IconContext.Provider value = {{size: "1.5em"}}>
+      <GiCrossMark /> Failed
+    </IconContext.Provider>
+  </Alert>,
+  null,
+  <Alert variant = "success">
+    <IconContext.Provider value = {{size: "1.5em"}}>
+      <TiTickOutline /> Accepted
+    </IconContext.Provider>
+  </Alert>
+]
 
 class IDE extends Component{
   modes = [{value: "c_cpp", label: "C/C++", language: "cpp"}, {value: "java", language: "java", label: "Java"}, {value: "python", label: "Python3", language: "python3"}]
@@ -28,6 +46,7 @@ class IDE extends Component{
       stdout : ``,
       executing : false,
       showRun : false,
+      AC: 0,
     }
   }
 
@@ -80,8 +99,25 @@ class IDE extends Component{
                 request(`http://api.paiza.io:80/runners/get_details?id=${pzID}&api_key=guest`, (err, rs, body) => {
                   const sout = (String((JSON.parse(rs.body))["stdout"])).trim()
                   const diff = jsdiff.diffChars(sout, opdata.trim());
-                  if(diff[0]["added"] || diff[0]["removed"])  console.log("Wrong Answer")
-                  else  console.log("ACCEPTED")
+                  if(diff[0]["added"] || diff[0]["removed"])  this.setState({AC: -1})
+                  else  {
+                    this.setState({AC: 1})
+                    if(au){
+                      const uref = this.props.firebase.user
+                      const auid = au.uid
+                      let solved = []
+                      uref(auid).on("value", snapshot => solved = snapshot.val().solved || [])
+                      if(solved.indexOf(this.props.pid) === -1){
+                        solved.push(this.props.pid)
+                        uref(auid)
+                          .update({
+                            solved
+                          })
+                        uref(auid).on("value", snapshot => solved = snapshot.val().solved || [])
+                      }
+                    }
+                  }
+                  setTimeout(() => this.setState({AC: 0}), 5000)
                 })
               }, 1000)
             })
@@ -93,7 +129,12 @@ class IDE extends Component{
 
   render() {
     return(
+      <AuthUserContext.Consumer>{
+        authUser =>{
+          au = authUser
+          return(
       <div className = "ide" id = "ide" style = {{height: "100%", width: "100%"}}>
+        {alerts[this.state.AC+1]}
         <span>Language: </span>
         <span><Select
           className = "inline langSelect"
@@ -126,7 +167,8 @@ class IDE extends Component{
           onChange = {this.onScriptChange}
         />
         <CustomTest show = {this.state.showRun} onHide = {() => this.setState({showRun: false})} stdin = {this.state.stdin} stdout = {this.state.stdout} onStdInChange = {this.onStdInChange} onRun = {this.onRun} executing = {this.state.executing}/>
-      </div>
+      </div>)}}
+      </AuthUserContext.Consumer>
     )
   }
 }
