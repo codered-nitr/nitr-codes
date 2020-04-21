@@ -12,7 +12,22 @@ const Problemset = props => {
   const getData = auth => {
     props.firebase.db.ref('problems').once("value", snapshot => {
       pbms = (Object.values(snapshot.val()))
-      if(!auth) return
+      if(!auth){
+        setShow(pbms.map((pbm, index) => {
+          return(
+            <tr>
+              <td>{index+1}</td>
+              <td>
+                <span onClick = {() => window.open(`/problem/${pbm.id}`, '_blank')} style = {{textDecoration: "none", color: "#FEE715FF", cursor: "pointer"}}>{pbm.name}</span>
+                {solved.indexOf(pbm.id) !== -1?
+                <IconContext.Provider value = {{size: "1em"}}><TiTickOutline /></IconContext.Provider>:null}
+              </td>
+              <td>{pbm.tags.join(", ")}</td>
+              <td>{pbm.solved}</td>
+            </tr>
+        )}))
+        return
+      }
       props.firebase.user(auth.uid).once("value", snp => solved = snp.val().solved || [])
       .then(() =>
       setShow(pbms.map((pbm, index) => {
