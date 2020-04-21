@@ -22,10 +22,6 @@
     display: inline-block;
 }
 
-th{
-    width: 50%;
-}
-
 .actions{
     border-radius: 15px;
     min-width: 75px;
@@ -89,10 +85,6 @@ input:focus, textarea:focus, select:focus{
     justify-content: center;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-th{
-    color: whitesmoke !important;
 }
 
 .wd65{

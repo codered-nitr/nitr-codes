@@ -106,15 +106,24 @@ class IDE extends Component{
                       const uref = this.props.firebase.user
                       const auid = au.uid
                       let solved = []
-                      uref(auid).on("value", snapshot => solved = snapshot.val().solved || [])
-                      if(solved.indexOf(this.props.pid) === -1){
-                        solved.push(this.props.pid)
-                        uref(auid)
-                          .update({
-                            solved
-                          })
-                        uref(auid).on("value", snapshot => solved = snapshot.val().solved || [])
-                      }
+                      uref(auid).on("value", snapshot => {
+                        solved = snapshot.val().solved || []
+                        this.props.firebase.db.ref(`problems/${this.props.pid}`).once("value", snap => {
+                          const by = snap.val().solved + 1
+                          console.log(by)
+                          if(solved.indexOf(this.props.pid) === -1){
+                            solved.push(this.props.pid)
+                            uref(auid)
+                              .update({
+                                solved
+                              })
+                            uref(auid).on("value", snapshot => solved = snapshot.val().solved || [])
+                            this.props.firebase.db.ref(`problems/${this.props.pid}`).update({
+                              solved: by
+                            })
+                          }
+                        })
+                      })
                     }
                   }
                   setTimeout(() => this.setState({AC: 0}), 5000)
@@ -179,8 +188,8 @@ const CustomTest = props => {
       <Modal.Body style = {{backgroundColor: "#101820FF", color: "whitesmoke"}}>
         <Table className="center wd65" borderless>
           <thead><tr>
-            <th>StdIn</th>
-            <th>StdOut</th>
+            <th style = {{width: "50%", color: "whitesmoke!important"}}>StdIn</th>
+            <th style = {{width: "50%", color: "whitesmoke!important"}}>StdOut</th>
           </tr></thead>
         </Table>
         <div className = "IO center wd65">
