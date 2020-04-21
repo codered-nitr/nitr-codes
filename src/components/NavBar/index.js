@@ -42,12 +42,13 @@ class NavBar extends Component {
               <Nav.Link className="nav-l" href="/academy">Academy</Nav.Link>
               <Nav.Link className="nav-l" href="https://thecodered.club/ide">IDE</Nav.Link>
               <Nav.Link className="nav-l" href="/problemset">Problems</Nav.Link>
+              <Nav.Link className="nav-l" href="/weekly">Weekly</Nav.Link>
             </Nav>
             <Nav>
               <IconContext.Provider value = {{color: "inherit", size: "2em"}}>  
               {authUser?
                 <>
-                  <Nav.Link style={{color: "whitesmoke", textAlign: "center", fontFamily: "Verdana, Geneva, Tahoma, sans-serif", font: "outline"}} href="/account">
+                  <Nav.Link style={{color: "whitesmoke", textAlign: "center", fontFamily: "Verdana, Geneva, Tahoma, sans-serif", font: "outline"}}>
                     Hey, {authUser.displayName}!
                   </Nav.Link>
                   <span className = "logout" title = "Logout" style = {{marginLeft: "auto", marginRight: "auto"}}>

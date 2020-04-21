@@ -12,6 +12,7 @@ const Problemset = props => {
   const getData = auth => {
     props.firebase.db.ref('problems').once("value", snapshot => {
       pbms = (Object.values(snapshot.val()))
+      pbms.sort((a, b) => b.solved - a.solved)
       if(!auth){
         setShow(pbms.map((pbm, index) => {
           return(

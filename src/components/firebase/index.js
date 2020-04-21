@@ -32,9 +32,9 @@ class Firebase{
   //User API
   users = () => this.db.ref('users')
   user = uid => this.db.ref(`users/${uid}`)
-  //Contests API
-  contests = () => this.db.ref('contests')
-  contest = cid => this.db.ref(`contests/${cid}`)
+  //Weeks API
+  weeks = () => this.db.ref('weeks')
+  week = wid => this.db.ref(`weeks/${wid}`)
   //Problems API
   problems = () => this.db.ref('problems')
   problem = pid => this.db.ref(`problems/${pid}`)

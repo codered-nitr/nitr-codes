@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Contest = () => {
+const Week = () => {
   return(
     <div></div>
   )
 }
 
-export default Contest
+export default Week
