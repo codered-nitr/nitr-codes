@@ -93,10 +93,11 @@ const LSUBase = props => {
     props.firebase
       .doCreateUserWithEmailAndPassword(sEmail, sPass)
       .then(authUser => {
-        props.firebase.user(authUser.uid)
+        props.firebase.user(authUser.user.uid)
           .set({
             displayName: sName,
             nitrRoll: sRoll.toUpperCase(),
+            role: "user",
             solved: []
           })
           .then(() => props.firebase.auth.currentUser.updateProfile({displayName: sName}))

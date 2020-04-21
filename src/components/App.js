@@ -12,6 +12,7 @@ import NotFound from './404';
 import Problemset from './problemset'
 import Academy from './academy'
 import Paper from './academy/paper'
+import AddProblem from './problem/addProblem'
 import { withAuthentication } from './session';
 import { withDBX } from './dropbox'
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route exact path = "/academy" component = {Academy} />
           <Route exact path = "/academy/:type/:id/" component = {Paper} />
           <Route exact path = "/me" component = {Me} />
+          <Route exact path = "/cms/problem" component = {AddProblem} />
           <Route component = {NotFound} />
         </Switch>
       </Router>
