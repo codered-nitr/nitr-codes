@@ -43,6 +43,7 @@ class NavBar extends Component {
               <Nav.Link className="nav-l" href="https://thecodered.club/ide">IDE</Nav.Link>
               <Nav.Link className="nav-l" href="/problemset">Problems</Nav.Link>
               <Nav.Link className="nav-l" href="/weekly">Weekly</Nav.Link>
+              <Nav.Link className="nav-l" href="/forum">Forum</Nav.Link>
             </Nav>
             <Nav>
               <IconContext.Provider value = {{color: "inherit", size: "2em"}}>  

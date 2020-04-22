@@ -35,7 +35,7 @@ const Problem = props => {
             <div className = "ideDiv"><IDE pid = {id} dbx = {props.dbx} firebase = {props.firebase}/></div>
           : <div className = "ideDiv" style = {{textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center", verticalAlign: "middle", backgroundColor: "#101820FF"}}>
               <div>
-                <div style = {{color: "white"}} >Please verify your e-mail address to access.</div><br />
+                <div style = {{color: "white"}} >Please login and verify your e-mail address to access.</div><br />
                 {
                   authUser?
                   vmsent?<div>
