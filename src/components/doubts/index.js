@@ -28,9 +28,9 @@ const Doubts = props => {
           {!got?getDoubts(props, setList):null}
           <IconContext.Provider value = {{size: "1.25em"}}>
           <h2 style = {{textAlign: "center"}}>Peer-to-peer forum</h2>
-          <div style = {{maxWidth: "900px", marginLeft: "auto", marginRight: "auto"}}>
+          <div style = {{maxWidth: "900px", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
           <Tab.Container id = "doubts" defaultActiveKey = "zero">
-            <Row>
+            <Row noGutters>
               <Col sm = {3} style = {{fontFamily: "equinox", maxHeight: "90vh", overflow: "auto"}}>
                 <Nav variant = "pills" className = "flex-column">
                   <Nav.Item><Nav.Link eventKey = "zero">
