@@ -5,23 +5,24 @@ import { Button, Tab, Row, Col, Nav, Form, FormControl } from 'react-bootstrap'
 import { IconContext } from 'react-icons'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { FaAngleRight } from 'react-icons/fa'
-import { DiscussionEmbed } from 'disqus-react'
 let got = false
 const getDoubts = (props, setList) => {
+  got = true
   props.firebase.db.ref('doubts').once("value", snapshot => {
+    if(!snapshot.val()) return;
     setList((Object.values(snapshot.val())).sort((a,b) => b.timestamp-a.timestamp))
-    got = true
   })
 }
+
 const Doubts = props => {
   const [vmsent, setVM] = useState(false)
   const [heading, setHead] = useState("")
   const [dbt, setDbt] = useState("")
   const [list, setList] = useState([])
+  const [comment, setComment] = useState("")
   return(
     <AuthUserContext.Consumer>
       {authUser => {
-        console.log(list)
         return(authUser && authUser.emailVerified?
         <div style = {{width: "100%"}}>
           {!got?getDoubts(props, setList):null}
@@ -30,7 +31,7 @@ const Doubts = props => {
           <div style = {{maxWidth: "900px", marginLeft: "auto", marginRight: "auto"}}>
           <Tab.Container id = "doubts" defaultActiveKey = "zero">
             <Row>
-              <Col sm = {3} style = {{fontFamily: "equinox"}}>
+              <Col sm = {3} style = {{fontFamily: "equinox", maxHeight: "90vh", overflow: "auto"}}>
                 <Nav variant = "pills" className = "flex-column">
                   <Nav.Item><Nav.Link eventKey = "zero">
                     <AiOutlinePlusCircle />&nbsp;
@@ -47,12 +48,16 @@ const Doubts = props => {
                 <Tab.Content>
                   <Tab.Pane eventKey = "zero">
                     <Form onSubmit = {event => {
-                      props.firebase.db.ref("doubts").push().set({
+                      const now = Date.now()
+                      props.firebase.db.ref(`doubts/${now}`).set({
                         author: authUser.displayName,
                         head: heading,
                         doubt: dbt,
-                        timestamp: Date.now()
+                        timestamp: now,
+                        comments: []
                       }).then(() => window.alert("Doubt successfully queued!"))
+                      setHead("")
+                      setDbt("")
                       event.preventDefault()
                     }}>
                       Subject: <FormControl type = "text" required value = {heading} onChange = {event => setHead(event.target.value)} placeholder = "Doubt heading/subject" /><br />
@@ -66,13 +71,31 @@ const Doubts = props => {
                       <small>asked by {d.author}</small>
                       <hr />
                       {d.doubt}
-                      <div className = "disqus">
-                        <DiscussionEmbed shortname = "nitrcodes" config = {{
-                          url: window.location.href,
-                          identifier: d.timestamp,
-                          title: d.head
-                        }} />
-                      </div>
+                      <hr />
+                      <h4 style = {{fontFamily: "madeEvolve"}}>Comments</h4>
+                      <Form onSubmit = {event => {
+                        d.comments = d.comments || []
+                        d.comments.push({
+                          author: authUser.displayName,
+                          email: authUser.email,
+                          timestamp: Date.now(),
+                          data: comment
+                        })
+                        props.firebase.db.ref(`doubts/${d.timestamp}`).update({comments: d.comments})
+                        setComment("")
+                        event.preventDefault()
+                      }}>
+                        <FormControl as = "textarea" required value = {comment} onChange = {event => setComment(event.target.value)} placeholder = "Add a comment" />
+                        <Button type = "sumbit" variant = "outline-dark">Send</Button>
+                      </Form>
+                      {d.comments?d.comments.sort((a, b) => b.timestamp - a.timestamp).map((c, i) => (
+                        <div style = {{borderBottom: "1px dashed"}}>
+                          <span><i><a href = {`mailto:${c.email}`} style = {{textDecoration: "none"}}>{c.author}</a> says: </i></span>
+                          <span>{c.data}</span>
+                        </div>
+                        ))
+                       :<div>No comments yet</div>
+                      }
                     </Tab.Pane>
                   ))}
                 </Tab.Content>
