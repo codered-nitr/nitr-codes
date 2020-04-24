@@ -28,7 +28,8 @@ const Doubts = props => {
           {!got?getDoubts(props, setList):null}
           <IconContext.Provider value = {{size: "1.25em"}}>
           <h2 style = {{textAlign: "center"}}>Peer-to-peer forum</h2>
-          <div style = {{maxWidth: "900px", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
+          <div style = {{textAlign: "center", maxWidth: "900px", marginLeft: "auto", marginRight: "auto"}}>If you have any doubts, feel free to post it here and wait for one of us or your peers to reply. If you would like to suggest/have a query regarding anything on the website, please send a mail to <a href="mailto:codered.nitrkl@gmail.com">codered.nitrkl@gmail.com</a> instead.</div>
+          <div style = {{maxWidth: "1000px", width: "90%", marginLeft: "auto", marginRight: "auto"}}>
           <Tab.Container id = "doubts" defaultActiveKey = "zero">
             <Row noGutters>
               <Col sm = {3} style = {{fontFamily: "equinox", maxHeight: "90vh", overflow: "auto"}}>
