@@ -10,12 +10,11 @@ import NotFound from './404';
 import Problemset from './problemset'
 import Academy from './academy'
 import Paper from './academy/paper'
-import AddProblem from './problem/addProblem'
 import { withAuthentication } from './session';
 import { withDBX } from './dropbox'
 import Weekly from './weekly'
 import Doubts from './doubts'
-import AddPaper from './academy/addPaper'
+import CMS from './cms'
 function App() {
   return (
     <div className="App">
@@ -29,8 +28,7 @@ function App() {
           <Route exact path = "/problem/:id/" component = {Problem} />
           <Route exact path = "/academy" component = {Academy} />
           <Route exact path = "/academy/:type/:id/" component = {Paper} />
-          <Route exact path = "/cms/problem" component = {AddProblem} />
-          <Route exact path = "/cms/paper" component = {AddPaper} />
+          <Route exact path = "/cms" component = {CMS} />
           <Route exact path = "/forum" component = {Doubts} />
           <Route component = {NotFound} />
         </Switch>
