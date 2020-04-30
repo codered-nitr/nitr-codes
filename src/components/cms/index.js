@@ -63,7 +63,7 @@ const AddPaperBase = props => {
             props.firebase.user(authUser.uid).on("value", snapshot => {
               role = snapshot.val().role || "user"
               if(role !== "admin")  return;
-              if(pt !== "articles" || pt !== "editorials"){
+              if(pt !== "articles" && pt !== "editorials"){
                 window.alert("Invalid paper type")
                 return
               }
