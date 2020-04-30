@@ -71,7 +71,8 @@ const AddPaperBase = props => {
                 .set({
                   id: pid,
                   name: pname,
-                  description: pdesc
+                  description: pdesc,
+                  timestamp: Date.now()
                 })
                 .then(() => window.alert("Added"))
             })
