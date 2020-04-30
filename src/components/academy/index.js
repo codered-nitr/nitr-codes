@@ -6,14 +6,14 @@ const getArticles = (firebase, setArticles) => {
   firebase.db.ref('articles').once("value", snapshot => {
     gotA = true
     if(!snapshot.val()) return;
-    setArticles((Object.values(snapshot.val())).sort((a,b) => b.timestamp-a.timestamp))
+    setArticles((Object.values(snapshot.val())).sort((a,b) => a.timestamp-b.timestamp))
   })
 }
 const getEditorials = (firebase, setEd) => {
   firebase.db.ref('editorials').once("value", snapshot => {
     gotE = true
     if(!snapshot.val()) return;
-    setEd((Object.values(snapshot.val())).sort((a,b) => b.timestamp-a.timestamp))
+    setEd((Object.values(snapshot.val())).sort((a,b) => a.timestamp-b.timestamp))
   })
 }
 const Academy = props => {
