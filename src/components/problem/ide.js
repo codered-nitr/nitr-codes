@@ -34,7 +34,7 @@ const alerts = [
 ]
 
 class IDE extends Component{
-  modes = [{value: "c_cpp", label: "C/C++", language: "cpp"}, {value: "java", language: "java", label: "Java"}, {value: "python", label: "Python3", language: "python3"}]
+  modes = [{value: "c_cpp", label: "C/C++", language: "cpp17", versionIndex: 0}, {value: "java", language: "java", label: "Java", versionIndex: 3}, {value: "python", label: "Python3", language: "python3", versionIndex: 3}]
   selected = 0
   constructor(props){
     super(props)
@@ -61,44 +61,43 @@ class IDE extends Component{
   onRun = () => {
     this.setState({executing: true, stdout: `Compiling and Executing your program...`})
     request({
-      url: `http://api.paiza.io:80/runners/create?source_code=${encodeURIComponent(this.state.script)}&language=${this.modes[this.selected].language}&input=${encodeURIComponent(this.state.stdin)}&api_key=guest`,
-      method: "POST"
+      url: 'https://codered-web-server.herokuapp.com/api/execute',
+      method: "POST",
+      json: {
+        script: this.state.script,
+        language: this.modes[this.selected].language,
+        versionIndex: this.modes[this.selected].versionIndex,
+        stdin: this.state.stdin
+      }
     }, (error, response, body) => {
-      const id = (JSON.parse(response.body))["id"];
-      setTimeout(() => {
-        request(`http://api.paiza.io:80/runners/get_details?id=${id}&api_key=guest`, (err, res, body) => {
-          const jres = JSON.parse(res.body)
-          const br = jres["build_result"]
-          const r = jres["result"]
-          const bse = jres["build_stderr"]
-          if(bse && bse !== "") this.setState({stdout: bse})
-          else if(br && br === "failure") this.setState({stdout: "Compilation Error"})
-          else if(r && r === "timeout") this.setState({stdout: "Time Limit Exceeded"})
-          else if(r && r === "failure") this.setState({stdout: "Failed"})
-          else  this.setState({stdout: jres["stdout"]})
-          this.setState({executing: false})
-        })
-      }, 3000)
+      if(response)
+        this.setState({stdout: response.body.output || ``, executing: false})
     })
   }
   onSubmit = () => {
+    this.setState({executing: true})
     this.props.dbx.filesDownload({
       path: `/testcases/${this.props.pid}.txt`
     }).then(response => {
       response.fileBlob.text().then(testdata => {
         request({
-          url: `http://api.paiza.io:80/runners/create?source_code=${encodeURIComponent(this.state.script)}&language=${this.modes[this.selected].language}&input=${encodeURIComponent(testdata)}&api_key=guest`,
-          method: "POST"
-        }, (err, res, body) => {
-          const pzID = (JSON.parse(res.body))["id"];
-          this.props.dbx.filesDownload({
-            path: `/outputs/${this.props.pid}.txt`
-          }).then(resp => {
-            resp.fileBlob.text().then(opdata => {
-              setTimeout(() => {
-                request(`http://api.paiza.io:80/runners/get_details?id=${pzID}&api_key=guest`, (err, rs, body) => {
-                  const sout = (String((JSON.parse(rs.body))["stdout"])).trim()
-                  const diff = jsdiff.diffChars(sout, opdata.trim());
+          url: 'https://codered-web-server.herokuapp.com/api/execute',
+          method: "POST",
+          json: {
+            script: this.state.script,
+            language: this.modes[this.selected].language,
+            versionIndex: this.modes[this.selected].versionIndex,
+            stdin: testdata
+          }
+        }, (error, response, body) => {
+          if(response){
+            this.setState({executing: false})
+            this.props.dbx.filesDownload({
+              path: `/outputs/${this.props.pid}.txt`
+            }).then(resp => {
+              resp.fileBlob.text().then(opdata => {
+                const sout = (response.body.output || '').trim()
+                const diff = jsdiff.diffChars(sout, opdata.trim());
                   if(diff[0]["added"] || diff[0]["removed"])  this.setState({AC: -1})
                   else  {
                     this.setState({AC: 1})
@@ -110,7 +109,7 @@ class IDE extends Component{
                         solved = snapshot.val().solved || []
                         this.props.firebase.db.ref(`problems/${this.props.pid}`).once("value", snap => {
                           const by = snap.val().solved + 1
-                          console.log(by)
+                          // console.log(by)
                           if(solved.indexOf(this.props.pid) === -1){
                             solved.push(this.props.pid)
                             uref(auid)
@@ -128,13 +127,12 @@ class IDE extends Component{
                   }
                   setTimeout(() => this.setState({AC: 0}), 5000)
                 })
-              }, 1000)
-            })
+              })
+            }
           })
         })
       })
-    })
-  }
+    }
 
   render() {
     return(
@@ -157,7 +155,7 @@ class IDE extends Component{
         <span style = {{textAlign: "right"}}>
           {this.state.executing ? <Spinner animation = "grow" size = "sm" variant = "danger"/>:
             <Button className = "actions" id = {this.state.executing?"running":"run"} type = "button" disabled = {this.state.executing} onClick = {() => this.setState({showRun: true})}>Custom Test</Button>}
-          <Button className = "actions" id = "submit" type = "button" onClick = {this.onSubmit}>Submit</Button>
+          <Button className = "actions" id = "submit" type = "button" disabled = {this.state.executing} onClick = {this.onSubmit}>Submit</Button>
           <Button className = "actions" id = "clear" type = "button" onClick = {this.onClear}>Clear</Button>
         </span>
         <AceEditor
