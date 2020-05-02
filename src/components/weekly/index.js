@@ -25,11 +25,15 @@ const Weekly = props => {
             <h3>Week {w.id}</h3>
             <div style = {{paddingLeft: "20px"}}>
               <h5>Articles</h5>
-              {w.articles.map(a => <a style = {{textDecoration: "none"}} href = {`/academy/articles/${a}`}>{a}</a>)}
+              {w.articles.map(a => <><a style = {{textDecoration: "none"}} href = {`/academy/articles/${a}`}>{a}</a><br /></>)}
               <h5>Problems</h5>
-              {w.problems.map(a => <a style = {{textDecoration: "none"}} href = {`/problem/${a}`}>{a}</a>)}
+              {w.problems.map(a => <><a style = {{textDecoration: "none"}} href = {`/problem/${a}`}>{a}</a><br /></>)}
+              {(w.editorials.length && w.editorials[0].length)?
+              <>
               <h5>Editorials</h5>
-              {w.editorials.map(a => <a style = {{textDecoration: "none"}} href = {`/academy/editorials/${a}`}>{a}</a>)}
+              {w.editorials.map(a => <><a style = {{textDecoration: "none"}} href = {`/academy/editorials/${a}`}>{a}</a><br /></>)}
+              </>
+              :null}
             </div>
           </div>
         ))}</div>
